@@ -82,5 +82,5 @@ module.exports = {
 
 9. start
 ```
-yarn run serv
+yarn run serve
 ```
