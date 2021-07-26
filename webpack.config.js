@@ -22,7 +22,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.(ts|tsx)?$/,
         use: ['babel-loader', 'ts-loader'],
       },
     ],
@@ -31,7 +31,6 @@ module.exports = {
     path: path.join(__dirname, '/dist'),
     filename: 'bundle.js',
   },
-
   plugins: [
     new webpack.ProvidePlugin({
       React: 'react',
