@@ -99,6 +99,13 @@ yarn run serve
 16. webpack => common, prod, dev 분리
 
 ### Project run
+- script
+```
+"scripts": {
+    "build": "cross-env NODE_ENV=PRODUCTION webpack --config webpack.prod.js",
+    "start": "cross-env NODE_ENV=DEVELOPMENT webpack serve --config webpack.dev.js"
+}
+```
 1. npm
 - dev
 ```
