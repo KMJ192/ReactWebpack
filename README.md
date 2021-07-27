@@ -58,12 +58,14 @@ const path = require('path');
 
 module.exports = {
     ...,
-    devServer:{
+    devServer: {
+        open: true,
+        overlay: true,
         historyApiFallback: true,
         inline: true,
         port: 3000,
         hot: true,
-        publicPath: '/'
+        publicPath: '/',
     },
     plugins:[
         ...,
@@ -93,6 +95,8 @@ yarn run serve
 12. clean webpack plugin
 13. css-minimizer-webpack-plugin 설정
 14. terser 설정
+15. webpack.Define설정
+16. webpack => common, prod, dev 분리
 
 ### Project run
 1. npm

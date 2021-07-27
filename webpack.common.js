@@ -1,25 +1,14 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
-const TerserWebpackPlugin = require('terser-webpack-plugin');
 
-const prod = process.env.NODE_ENV === 'production';
-
-const webpack = require('webpack');
 const path = require('path');
+const webpack = require('webpack');
+
+const isProd = process.env.NODE_ENV === 'PRODUCTION';
 
 module.exports = {
-  devServer: {
-    historyApiFallback: true,
-    inline: true,
-    port: 3000,
-    hot: true,
-    publicPath: '/',
-  },
-  mode: prod ? 'production' : 'development',
-  devtool: prod ? 'hidden-source-map' : 'eval',
   entry: './src/index.tsx',
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
@@ -58,35 +47,18 @@ module.exports = {
       title: 'Webpack',
       template: './public/index.html',
       filename: 'index.html',
-      minify:{
+      minify: isProd ? {
         removeComments: true,
         useShortDoctype: true
-      }
+      } : false
     }),
-    new webpack.HotModuleReplacementPlugin(),
     new ForkTsCheckerWebpackPlugin(),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: '[contenthash].css'
     }),
-    new CssMinimizerWebpackPlugin()
-  ],
-  optimization: {
-    runtimeChunk:{
-      name: 'runtime'
-    },
-    splitChunks: {
-      cacheGroups:{
-          commons:{
-            test: /[\\/]node_modules[\\/]/,
-            name: 'venders',
-            chunks: 'all'
-          }
-      }
-    },    
-    minimize: true,
-    minimizer: [
-      new TerserWebpackPlugin()
-    ]
-  }
+    new webpack.DefinePlugin({
+        IS_PRODUCTION: isProd
+    })
+  ]
 };
