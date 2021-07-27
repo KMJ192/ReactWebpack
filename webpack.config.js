@@ -1,5 +1,8 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 const prod = process.env.NODE_ENV === 'production';
 
 const webpack = require('webpack');
@@ -25,11 +28,25 @@ module.exports = {
         test: /\.(ts|tsx)?$/,
         use: ['babel-loader', 'ts-loader'],
       },
+      {
+        test: /\.css$/i,
+        rules: [
+          {
+            loader: MiniCssExtractPlugin.loader 
+          },
+          {
+            loader: 'css-loader',
+            options:{
+                modules: true
+            }
+          }
+        ]
+      }
     ],
   },
   output: {
+    filename: '[name].[chunkhash].js',
     path: path.join(__dirname, '/dist'),
-    filename: 'bundle.js',
   },
   plugins: [
     new webpack.ProvidePlugin({
@@ -40,6 +57,24 @@ module.exports = {
       filename: 'index.html'
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new ForkTsCheckerWebpackPlugin()
+    new ForkTsCheckerWebpackPlugin(),
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '[contenthash].css'
+    })
   ],
+  optimization: {
+    runtimeChunk:{
+      name: 'runtime'
+    },
+    splitChunks: {
+      cacheGroups:{
+          commons:{
+            test: /[\\/]node_modules[\\/]/,
+            name: 'venders',
+            chunks: 'all'
+          }
+      }
+    }
+  }
 };

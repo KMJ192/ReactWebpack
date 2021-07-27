@@ -5,3 +5,4 @@ dist
 *.swp
 package-lock.json
 .jest
+yarn.lock

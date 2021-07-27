@@ -84,3 +84,32 @@ module.exports = {
 ```
 yarn run serve
 ```
+
+10. css-loader
+11. hasing for caching
+- contents hashing
+- runtime hasing
+- vendor hashing
+12. clean webpack plugin
+
+
+### Project run
+1. npm
+- dev
+```
+npm run start
+```
+- prod
+```
+npm run build
+```
+
+2. yarn
+- dev
+```
+yarn run start
+```
+- prod
+```
+yarn run build
+```
