@@ -91,7 +91,8 @@ yarn run serve
 - runtime hasing
 - vendor hashing
 12. clean webpack plugin
-
+13. css-minimizer-webpack-plugin 설정
+14. terser 설정
 
 ### Project run
 1. npm

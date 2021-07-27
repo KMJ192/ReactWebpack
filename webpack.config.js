@@ -2,6 +2,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
+const TerserWebpackPlugin = require('terser-webpack-plugin');
 
 const prod = process.env.NODE_ENV === 'production';
 
@@ -53,15 +55,21 @@ module.exports = {
       React: 'react',
     }),
     new HtmlWebpackPlugin({
+      title: 'Webpack',
       template: './public/index.html',
-      filename: 'index.html'
+      filename: 'index.html',
+      minify:{
+        removeComments: true,
+        useShortDoctype: true
+      }
     }),
     new webpack.HotModuleReplacementPlugin(),
     new ForkTsCheckerWebpackPlugin(),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: '[contenthash].css'
-    })
+    }),
+    new CssMinimizerWebpackPlugin()
   ],
   optimization: {
     runtimeChunk:{
@@ -75,6 +83,10 @@ module.exports = {
             chunks: 'all'
           }
       }
-    }
+    },    
+    minimize: true,
+    minimizer: [
+      new TerserWebpackPlugin()
+    ]
   }
 };
