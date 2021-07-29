@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.css';
-import style from './tmp.module.scss';
 
 function App() {
   return(
     <div className="app">
       <div className="test-container">
-        <div className={style.tmp}>
+        <div>
           내용1
         </div>
         <div>
