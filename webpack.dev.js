@@ -18,6 +18,7 @@ const config = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
   ],
+  
 };
 
 module.exports = merge(common, config);
