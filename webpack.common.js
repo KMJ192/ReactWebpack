@@ -18,19 +18,42 @@ module.exports = {
       {
         test: /\.(ts|tsx)?$/,
         use: ['babel-loader', 'ts-loader'],
+        exclude: /node_modules/
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        oneOf:[
+          {
+              test: /\.module\.s[ac]ss$/,
+              use: [
+                  {
+                      loader: MiniCssExtractPlugin.loader
+                  },
+                  {
+                      loader: 'css-loader',
+                      options:{
+                          modules: true
+                      }
+                  },
+                  'sass-loader'
+              ],
+              exclude: /node_modules/
+          },
+          {
+              use: [
+                MiniCssExtractPlugin.loader,
+                'css-loader',
+                'sass-loader'
+              ],
+              exclude: /node_modules/
+          }
+        ]
       },
       {
         test: /\.css$/i,
-        rules: [
-          {
-            loader: MiniCssExtractPlugin.loader 
-          },
-          {
-            loader: 'css-loader',
-            options:{
-                modules: true
-            }
-          }
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader'
         ]
       },
       {

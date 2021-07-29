@@ -97,19 +97,17 @@ yarn run serve
 14. terser 설정
 15. webpack.Define설정
 16. webpack => common, prod, dev 분리
+17. url-loader, sass-loader 설정
 
 ### Project run
-- script
-```
-"scripts": {
-    "build": "cross-env NODE_ENV=PRODUCTION webpack --config webpack.prod.js",
-    "start": "cross-env NODE_ENV=DEVELOPMENT webpack serve --config webpack.dev.js"
-}
-```
 1. npm
-- dev
+- dev serve
 ```
 npm run start
+```
+- dev
+```
+npm run dev
 ```
 - prod
 ```
@@ -117,9 +115,13 @@ npm run build
 ```
 
 2. yarn
-- dev
+- dev serve
 ```
 yarn run start
+```
+- dev
+```
+yarn run dev
 ```
 - prod
 ```
