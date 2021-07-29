@@ -8,6 +8,15 @@ const webpack = require('webpack');
 
 const isProd = process.env.NODE_ENV === 'PRODUCTION';
 
+const postcssLoader = {
+  loader: 'postcss-loader',
+  options: {
+      postcssOptions: {
+          config: path.resolve(__dirname, 'postcss.config.js')
+      }
+  }
+}
+
 module.exports = {
   entry: './src/index.tsx',
   resolve: {
@@ -35,6 +44,7 @@ module.exports = {
                           modules: true
                       }
                   },
+                  postcssLoader,
                   'sass-loader'
               ],
               exclude: /node_modules/
@@ -43,6 +53,7 @@ module.exports = {
               use: [
                 MiniCssExtractPlugin.loader,
                 'css-loader',
+                postcssLoader,
                 'sass-loader'
               ],
               exclude: /node_modules/
