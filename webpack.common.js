@@ -34,10 +34,28 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {}
-        ]
+        test: /\.(png|jpe?g|gif|tif?f|raw|bmp)$/i,
+        use: [{
+            loader: 'file-loader',
+            options: {
+                name() {
+                    if(!isProduction){
+                        return '[path][name].[ext]';
+                    }
+                    return '[contenthash].[ext]';
+                },
+                outputPath: 'assets/'
+            }
+        }]
+      },
+      {
+        test: /\.svg$/i,
+        use: [{
+            loader: 'url-loader',
+            options: {
+                limit: 8192
+            }
+        }]
       }
     ],
   },
