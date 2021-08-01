@@ -98,6 +98,13 @@ yarn run serve
 15. webpack.Define설정
 16. webpack => common, prod, dev 분리
 17. url-loader, sass-loader 설정
+18. eslint, prettier 설정
+```
+yarn add eslint-plugin-prettier eslint-config-prettier prettier-eslint -D
+```
+- .eslintrc 설정
+- [eslintDocs](https://prettier.io/docs/en/configuration.html)
+
 
 ### Project run
 1. npm
