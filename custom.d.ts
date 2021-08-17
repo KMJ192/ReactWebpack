@@ -22,3 +22,11 @@ declare module '*.module.styl' {
   const classes: { [key: string]: string };
   export default classes;
 }
+
+declare module "*.svg" {
+  // import React from "react";
+  // const content: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
+
+  const content: string;
+  export default content;
+}
