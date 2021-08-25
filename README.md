@@ -93,18 +93,61 @@ yarn run serve
 - runtime hasing
 - vendor hashing
 12. clean webpack plugin
-13. css-minimizer-webpack-plugin 설정
+13. css-minimizer-webpack-plugin 설정·
 14. terser 설정
 15. webpack.Define설정
 16. webpack => common, prod, dev 분리
 17. url-loader, sass-loader 설정
-18. eslint, prettier 설정
+18. postcss설정 
+- autoprefixer를 쓰기 위함, vendor-prefixed css속성을 자동으로 추가해줌
+- postcss, postcss-loader 설치
 ```
-yarn add eslint-plugin-prettier eslint-config-prettier prettier-eslint -D
+yarn add -D postcss postcss-loader
 ```
-- .eslintrc 설정
-- [eslintDocs](https://prettier.io/docs/en/configuration.html)
+- postcss.config.js 파일 설정
+- webpack에 postcss 설정
+```js
+// ...
+const postcssLoader = {
+  loader: 'postcss-loader',
+  options: {
+      postcssOptions: {
+          config: path.resolve(__dirname, 'postcss.config.js')
+      }
+  }
+}
+// ...
+module.exports ={
+  module: {
+  rules: [
+    // ...,
+    {
+      test: /\.s[ac]ss$/i,
+      postcssLoader,
+      // ...
+    },
+    //...
+  ]
+}
+```
 
+19. eslint, prettier 설정
+- prettier eslint 설치
+- eslint-config-prettier eslint-plugin-prettier 설치
+- @typescript-eslint/eslint-plugin @typescript-eslint/parser 설치
+- eslint-config-prettier 설치 (eslint에서 prettier와 중복되는 룰을 삭제)
+- eslint-plugin-prettier 설치 (eslint에 prettier의 formatting 기능 추가)
+```
+yarn add -D prettier eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-plugin-prettier
+```
+- airbnb의 lint설정을 따른다. eslint-config-airbnb를 설치한다.
+```
+npx install-peerdeps --dev eslint-config-airbnb
+// or
+yarn add -D eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-hooks
+```
+- .eslintrc, .prettierrc 파일 생성 및 옵션 설정
+- .eslintignore 파일 생성 (eslint를 적용하지 않을 파일 설정)
 
 ### Project run
 1. npm

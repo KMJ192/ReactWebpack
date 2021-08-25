@@ -6,3 +6,4 @@ dist
 package-lock.json
 .jest
 yarn.lock
+yarn-error.log

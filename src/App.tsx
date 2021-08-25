@@ -1,9 +1,10 @@
 import React from 'react';
 
 function App() {
+
   return(
-    <div className="app">
-      Setting react from webpack
+    <div className='app'>
+      Custom React Project
     </div>
   );
 }
