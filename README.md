@@ -144,10 +144,11 @@ yarn add -D prettier eslint @typescript-eslint/eslint-plugin @typescript-eslint/
 ```
 npx install-peerdeps --dev eslint-config-airbnb
 // or
-yarn add -D eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-hooks
+yarn add -D eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-hooks
 ```
 - .eslintrc, .prettierrc 파일 생성 및 옵션 설정
 - .eslintignore 파일 생성 (eslint를 적용하지 않을 파일 설정)
+- eslint설정이 적용 안된 경우 setting.json에 "eslint.alwaysShowStatus": true를 설정하면 vscode의 progress bar에서 ESLint로그를 확인할 수 있다. 여기에서 오류 로그를 확인하여 수정 가능
 
 ### Project run
 1. npm
