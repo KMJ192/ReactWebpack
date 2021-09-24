@@ -6,6 +6,7 @@
     "allowJs": true,
     "jsx": "react",
     "declaration": true,
+    "declarationDir": "./dist",
     "declarationMap": true,
     "sourceMap": true,
     "outDir": "./dist",
