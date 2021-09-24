@@ -23,15 +23,12 @@ declare module '*.module.styl' {
   export default classes;
 }
 
-declare module "*.svg" {
-  // import React from "react";
-  // const content: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
-
+declare module '*.svg' {
   const content: string;
   export default content;
 }
 
-declare module "*.png" {
+declare module '*.png' {
   const content: string;
   export default content;
 }
