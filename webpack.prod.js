@@ -1,14 +1,20 @@
+const path = require('path');
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
 
 const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+const outputDir = 'build';
 
 const config = {
   devtool: 'hidden-source-map',
   mode: 'production',
-  plugins: [new CssMinimizerWebpackPlugin(), new CleanWebpackPlugin()],
+  plugins: [new CssMinimizerWebpackPlugin()],
+  output: {
+    filename: '[name].[chunkhash].js',
+    path: path.join(__dirname, outputDir),
+  },
   optimization: {
     runtimeChunk: {
       name: 'runtime',

@@ -7,8 +7,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const isProd = process.env.NODE_ENV === 'PRODUCTION';
 
-const outputDir = 'dist';
-
 const postcssLoader = {
   loader: 'postcss-loader',
   options: {
@@ -88,10 +86,6 @@ module.exports = {
         ],
       },
     ],
-  },
-  output: {
-    filename: '[name].[chunkhash].js',
-    path: path.join(__dirname, outputDir),
   },
   plugins: [
     new webpack.ProvidePlugin({
