@@ -26,7 +26,7 @@ const cssLoader = {
 module.exports = {
   entry: './src/index.tsx',
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     alias: {
       '@src': path.resolve(__dirname, 'src'),
     },

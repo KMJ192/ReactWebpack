@@ -10,6 +10,9 @@ function MainPage() {
       <h1>
         <Link to='test-page-b'>test page b</Link>
       </h1>
+      <h1>
+        <Link to='test-code'>test code</Link>
+      </h1>
     </div>
   );
 }

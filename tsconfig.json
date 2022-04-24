@@ -10,7 +10,7 @@
     "declarationMap": true,
     "sourceMap": true,
     "outDir": "./build",
-    "isolatedModules": true,
+    "isolatedModules": false,
     "strict": true,
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
