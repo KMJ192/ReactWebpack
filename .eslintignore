@@ -5,3 +5,4 @@ webpack*
 babel*
 postcss*
 node_modules/*
+config/jest

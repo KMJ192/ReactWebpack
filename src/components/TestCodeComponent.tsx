@@ -11,8 +11,12 @@ function TestCodeComponent({ count, increase, decrease }: Props) {
     <div>
       <h1>Counter</h1>
       <h2>{count}</h2>
-      <button onClick={increase}>증가</button>
-      <button onClick={decrease}>감소</button>
+      <button onClick={increase} type='button'>
+        증가
+      </button>
+      <button onClick={decrease} type='button'>
+        감소
+      </button>
     </div>
   );
 }

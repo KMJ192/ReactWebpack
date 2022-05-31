@@ -12,7 +12,12 @@ function TestCode() {
     setCount(count - 1);
   };
 
-  return <TestCodeComponent count={count} increase={increase} decrease={decrease} />;
+  return (
+    <>
+      {/* <TestCodeComponent count={count} increase={increase} decrease={decrease} /> */}
+      <a href='https://naver.com'>counter</a>
+    </>
+  );
 }
 
 export default TestCode;
