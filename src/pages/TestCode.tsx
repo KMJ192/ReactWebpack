@@ -1,5 +1,5 @@
-import TestCodeComponent from '@src/components/TestCodeComponent';
 import React, { useState } from 'react';
+import TestCodeComponent from '@src/components/TestCodeComponent';
 
 function TestCode() {
   const [count, setCount] = useState(0);

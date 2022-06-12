@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './Test.module.scss';
+
 interface Props {
   count: number;
   increase: () => void;
